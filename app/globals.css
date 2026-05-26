@@ -1,27 +1,58 @@
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .gradient-text {
+    @apply bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent;
+  }
+  .gradient-border {
+    background: linear-gradient(var(--background), var(--background)) padding-box,
+      linear-gradient(135deg, #7c3aed, #a855f7, #ec4899) border-box;
+    border: 1px solid transparent;
+  }
+  .glow-violet {
+    box-shadow: 0 0 60px -10px rgba(139, 92, 246, 0.4);
+  }
+}
+
+@layer base {
+  :root {
+    --background: oklch(0.08 0.01 285);
+    --foreground: oklch(0.97 0 0);
+    --card: oklch(0.11 0.01 285);
+    --card-foreground: oklch(0.97 0 0);
+    --popover: oklch(0.11 0.01 285);
+    --popover-foreground: oklch(0.97 0 0);
+    --primary: oklch(0.65 0.25 293);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.15 0.015 285);
+    --secondary-foreground: oklch(0.97 0 0);
+    --muted: oklch(0.15 0.015 285);
+    --muted-foreground: oklch(0.6 0.01 285);
+    --accent: oklch(0.18 0.02 285);
+    --accent-foreground: oklch(0.97 0 0);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 8%);
+    --input: oklch(1 0 0 / 10%);
+    --ring: oklch(0.65 0.25 293);
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  html {
+    @apply font-sans scroll-smooth;
   }
 }
